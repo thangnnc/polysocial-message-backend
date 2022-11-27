@@ -5,27 +5,34 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
 
+import org.springframework.http.HttpStatus;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseDTO implements Serializable {
 
-    private Integer code;
+	  private Integer status;
 
-    private String message;
+	    private String message;
 
-    public Integer getCode() {
-        return code;
-    }
+	    public Integer getStatus() {
+	        return status;
+	    }
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
+	    public void setStatus(Integer status) {
+	        this.status = status;
+	    }
 
-    public String getMessage() {
-        return message;
-    }
+	    public String getMessage() {
+	        return message;
+	    }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+	    public void setMessage(String message) {
+	        this.message = message;
+	    }
+
+	    public void setStatus(HttpStatus httpStatus){
+	        this.status = httpStatus.value();
+	        this.message = httpStatus.name();
+	    }
 }

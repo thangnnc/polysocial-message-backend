@@ -1,21 +1,24 @@
 package com.polysocial.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
 
-@Data
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
+@Getter
+@Setter
 public class MessageDTO implements Serializable {
+	
+    private Long messageId;
 
-    private String mess1;
+    private String content;
 
-    private String mess2;
+    private Boolean status;
 
-    private String mess3;
-
-    private String mess4;
+    private LocalDateTime createdDate;
+    
+    private Long contactId;
 }
