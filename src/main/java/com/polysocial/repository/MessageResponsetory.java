@@ -17,7 +17,7 @@ public interface MessageResponsetory extends JpaRepository<Messages, Long> {
 			+ "  JOIN Contacts c on m.contactId = c.contactId\n"
 			+ "  JOIN Users u on c.userId = u.userId\n"
 			+ "  JOIN RoomChats r on r.roomId = c.roomId\n"
-			+ "  WHERE r.roomId= :roomId\n"
+			+ "  WHERE r.roomId= ?1\n"
 			+ "  ORDER by m.createdDate", nativeQuery = true)
 	List<Object[]> findMessageAll( Long roomId);
 	
