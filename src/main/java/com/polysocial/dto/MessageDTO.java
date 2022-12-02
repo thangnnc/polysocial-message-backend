@@ -21,4 +21,6 @@ public class MessageDTO implements Serializable {
     private LocalDateTime createdDate;
     
     private Long contactId;
+    
+    private Long roomId;
 }

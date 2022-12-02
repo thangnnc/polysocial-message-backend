@@ -1,6 +1,7 @@
 package com.polysocial.rest.controller;
 
 import com.polysocial.consts.MessageAPI;
+import com.polysocial.dto.GroupNameDTO;
 import com.polysocial.dto.MessageContentDTO;
 import com.polysocial.dto.MessageDTO;
 import com.polysocial.dto.ResponseDTO;
@@ -13,6 +14,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,4 +48,10 @@ public class MessageController {
 			return ResponseEntity.ok(response);
 		}
 	}
+	
+	@PostMapping(MessageAPI.API_GET_NAME_GROUP)
+	public ResponseEntity getGroupNameMessageDESC(@RequestBody GroupNameDTO dto) {
+			List<GroupNameDTO> response = messageService.getNameGroupDESC(dto);
+			return ResponseEntity.ok(response);
+		}
 }

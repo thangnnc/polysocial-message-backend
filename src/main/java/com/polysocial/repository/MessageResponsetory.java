@@ -21,4 +21,16 @@ public interface MessageResponsetory extends JpaRepository<Messages, Long> {
 			+ "  ORDER by m.createdDate", nativeQuery = true)
 	List<Object[]> findMessageAll( Long roomId);
 	
+	
+	
+	
+	@Query(value = "Select r.roomId, g.name,g.avatar,r.LastMessage,g.totalMember from RoomChats r\n"
+			+ "JOIN Groups g on g.groupId = r.groupId\n"
+			+ "JOIN Contacts c on r.roomId = c.roomId\n"
+			+ "JOIN Users u on c.userId = u.userId\n"
+			+ "WHERE u.userId=?1\n"
+			+ "GROUP BY r.roomId,g.name,r.lastMessage,r.LastUpDateDate, g.avatar,g.totalMember\n"
+			+ "ORDER by r.LastUpDateDate DESC", nativeQuery = true)
+	List<Object[]> getNameGroupDESC(Long userId);
+	
 }

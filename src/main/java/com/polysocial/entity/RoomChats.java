@@ -2,6 +2,7 @@ package com.polysocial.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,5 +28,7 @@ public class RoomChats implements Serializable {
 
 	private Boolean status;
 
-	private LocalDate createdDate;
+	private LocalDateTime LastUpDateDate;
+	
+	private String lastMessage;
 }

@@ -6,12 +6,14 @@ import lombok.Data;
 
 @Data
 public class RoomChatDTO {
-	
+
 //	private Long roomId;
-	
+
 	private Long groupId;
 
 	private Boolean status;
 
-	private LocalDate createDate;
+	private LocalDate LastUpDateDate;
+
+	private String lastMessage;
 }
