@@ -14,6 +14,4 @@ public interface MessageService {
 
 	List<MessageContentDTO> getMessageContent(Long roomId);
 
-
-
 }

@@ -23,4 +23,6 @@ public class MessageDTO implements Serializable {
     private Long contactId;
     
     private Long roomId;
+    
+    private Long listcontactId[];
 }

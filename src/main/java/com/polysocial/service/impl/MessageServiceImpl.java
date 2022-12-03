@@ -6,9 +6,11 @@ import com.polysocial.dto.MessageDTO;
 import com.polysocial.entity.Contacts;
 import com.polysocial.entity.Messages;
 import com.polysocial.entity.RoomChats;
+import com.polysocial.entity.ViewedStatus;
 import com.polysocial.repository.ContactsResponsetory;
 import com.polysocial.repository.MessageResponsetory;
 import com.polysocial.repository.RoomChatRepository;
+import com.polysocial.repository.ViewedStatusRepository;
 import com.polysocial.service.MessageService;
 
 import java.time.LocalDate;
@@ -41,6 +43,9 @@ public class MessageServiceImpl implements MessageService {
 	
 	@Autowired
 	private ContactsResponsetory contactsResponsetory;
+	
+	@Autowired 
+	ViewedStatusRepository viewedStatusRepository;
 
 	public MessageDTO createMessage(MessageDTO dto) {
 		try {
@@ -50,14 +55,41 @@ public class MessageServiceImpl implements MessageService {
 				message.setCreatedDate(LocalDateTime.now());
 				message.setStatus(true);
 				messageResponsetory.save(message);
+				
 				Optional<RoomChats> list = roomChatRepository.findById(dto.getRoomId());
 				RoomChats room =list.get();
 				room.setLastUpDateDate(LocalDateTime.now());
 				room.setLastMessage(dto.getContent());
 				roomChatRepository.save(room);
+				
+				ViewedStatus viewedStatus= new ViewedStatus();
+				for (int i = 0; i < dto.getListcontactId().length; i++) {
+					try {
+						Long contactId= dto.getListcontactId()[i];
+						ViewedStatus viewStatusONE = viewedStatusRepository.updateViewedFALSE(contactId);
+						viewStatusONE.setLastUpDateDate(LocalDateTime.now());
+						viewStatusONE.setStatus(false);
+						viewedStatusRepository.save(viewStatusONE);
+					} catch (Exception e) {
+
+					}
+					//
+					viewedStatus.setContactId(dto.getListcontactId()[i]);
+					viewedStatus.setLastUpDateDate(LocalDateTime.now());
+					viewedStatus.setStatus(false);
+					viewedStatusRepository.save(viewedStatus);
+				}
+				ViewedStatus viewOne= new ViewedStatus();
+				viewOne.setContactId(dto.getContactId());
+				viewOne.setLastUpDateDate(LocalDateTime.now());
+				viewOne.setStatus(true);
+			
+				viewedStatusRepository.save(viewOne);
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return dto;
 	}
 
@@ -125,6 +157,16 @@ public class MessageServiceImpl implements MessageService {
 					// TODO: handle exception
 				}
 				listGroup.setTotalMember(Long.parseLong(objects[4].toString()));
+				try {
+					listGroup.setLastUpDateDate(objects[5].toString());
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				try {
+					listGroup.setStatus(Boolean.parseBoolean(objects[6].toString()));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 				dto.add(listGroup);
 			}
 			
@@ -135,4 +177,5 @@ public class MessageServiceImpl implements MessageService {
 		return null;
 
 	}
+	
 }
