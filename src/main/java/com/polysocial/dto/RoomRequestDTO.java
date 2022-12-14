@@ -10,4 +10,8 @@ import lombok.NoArgsConstructor;
 public class RoomRequestDTO {
 	
 	private Long roomId;
+	
+	private Long page;
+	
+	private Long limit;
 }

@@ -20,4 +20,10 @@ public class MessageContentDTO {
 
 	private String createdDate;
 	
+	private Boolean statusCreated;
+	
+	private String email;
+	
+	private Boolean messageRecall;
+	
 }

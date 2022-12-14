@@ -5,6 +5,7 @@ import java.util.List;
 import com.polysocial.dto.GroupNameDTO;
 import com.polysocial.dto.MessageContentDTO;
 import com.polysocial.dto.MessageDTO;
+import com.polysocial.dto.RoomRequestDTO;
 
 public interface MessageService {
 
@@ -12,6 +13,7 @@ public interface MessageService {
 
 	List<GroupNameDTO> getNameGroupDESC(GroupNameDTO request);
 
-	List<MessageContentDTO> getMessageContent(Long roomId);
+	List<MessageContentDTO> getMessageContent(RoomRequestDTO request);
+
 
 }

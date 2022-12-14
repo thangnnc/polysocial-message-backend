@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -39,12 +40,13 @@ public class MessageController {
 	
 	@PostMapping(MessageAPI.API_GET_MESSAGE)
 	public ResponseEntity getAllMessage(@RequestBody RoomRequestDTO request) {
+
 		if (ValidateUtils.isNullOrEmpty(request.getRoomId())) {
 			ResponseDTO response = new ResponseDTO();
 			response.setStatus(HttpStatus.BAD_REQUEST);
 			return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
 		} else {
-			List<MessageContentDTO> response = messageService.getMessageContent(request.getRoomId());
+			List<MessageContentDTO> response = messageService.getMessageContent(request);
 			return ResponseEntity.ok(response);
 		}
 	}

@@ -25,8 +25,12 @@ public class Messages implements Serializable {
     private String content;
 
     private Boolean status;
+    
+    private Boolean statusCreated;
 
     private LocalDateTime createdDate;
     
     private Long contactId;
+    
+    private Boolean messageRecall;
 }

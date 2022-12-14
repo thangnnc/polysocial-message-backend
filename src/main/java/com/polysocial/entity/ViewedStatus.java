@@ -19,7 +19,7 @@ public class ViewedStatus {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long seenId;
+	private Long viewedStatusId;
 	
 	private Long contactId;
 	
