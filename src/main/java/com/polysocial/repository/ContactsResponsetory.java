@@ -11,7 +11,7 @@ import com.polysocial.entity.Contacts;
 @Service
 public interface ContactsResponsetory extends JpaRepository<Contacts, Long> {
 
-	@Query(value = "select c.contactId,u.studentCode,u.avatar,u.fullName from Contacts c\n"
+	@Query(value = "select c.contactId,u.studentCode,u.avatar,u.fullName,u.email from Contacts c\n"
 			+ "JOIN Users u on u.userId = c.userId\n"
 			+ "WHERE c.roomId=?1", nativeQuery = true)
 	List<Object[]> getContactByRoomId(Long roomId);
