@@ -26,4 +26,6 @@ public class MessageContentDTO {
 	
 	private Boolean messageRecall;
 	
+	private Long userId;
+	
 }

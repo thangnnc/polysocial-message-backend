@@ -18,4 +18,10 @@ public interface ViewedStatusRepository extends JpaRepository<ViewedStatus, Long
 	
 	@Query(value = "update ViewedStatus set status =0 WHERE contactId=?1", nativeQuery = true)
 	ViewedStatus updateViewedFALSE(Long contactId);
+	
+	@Query(value = "  update v set status =1 \n"
+			+ "  from ViewedStatus v\n"
+			+ "  JOIN Contacts c on c.contactId = v.contactId\n"
+			+ "  WHERE c.userId = ?1", nativeQuery = true)
+	ViewedStatus updateAllViewed(Long userId);
 }

@@ -17,7 +17,7 @@ public interface MessageResponsetory extends JpaRepository<Messages, Long> {
 			+ "DECLARE @RowsOfPage AS bigint\n"
 			+ "SET @PageNumber= ?1\n"
 			+ "SET @RowsOfPage= ?2\n"
-			+ "SELECT c.isAdmin, u.studentCode , u.fullName, u.avatar , m.content, m.createdDate, m.statusCreated, u.email,m.messageRecall  \n"
+			+ "SELECT c.isAdmin, u.studentCode , u.fullName, u.avatar , m.content, m.createdDate, m.statusCreated, u.email,m.messageRecall, u.userId  \n"
 			+ "FROM Messages m\n"
 			+ "    JOIN Contacts c on m.contactId = c.contactId JOIN Users u on c.userId = u.userId\n"
 			+ "    JOIN RoomChats r on r.roomId = c.roomId\n"

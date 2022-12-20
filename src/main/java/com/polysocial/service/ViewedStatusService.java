@@ -6,4 +6,6 @@ public interface ViewedStatusService {
 
 	ViewedStatusDTO updateViewedStatus(ViewedStatusDTO dto);
 
+	ViewedStatusDTO updateAllViewedStatus(ViewedStatusDTO dto);
+
 }

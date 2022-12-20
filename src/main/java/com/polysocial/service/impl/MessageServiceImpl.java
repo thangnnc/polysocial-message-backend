@@ -123,6 +123,7 @@ public class MessageServiceImpl implements MessageService {
 				listMessage.setStatusCreated(Boolean.parseBoolean(objects[6].toString()));
 				listMessage.setEmail(objects[7].toString());
 				listMessage.setMessageRecall(Boolean.parseBoolean(objects[8].toString()));
+				listMessage.setUserId(Long.parseLong(objects[9].toString()));
 				dto.add(listMessage);
 			}
 			return dto;

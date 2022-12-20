@@ -22,4 +22,14 @@ public class ViewedStatusServiceImpl implements ViewedStatusService{
 		}
 		return dto;
 	}
+	
+	@Override
+	public ViewedStatusDTO updateAllViewedStatus(ViewedStatusDTO dto) {
+		try {
+			viewedStatusRepository.updateAllViewed(dto.getUserId());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return dto;
+	}
 }
