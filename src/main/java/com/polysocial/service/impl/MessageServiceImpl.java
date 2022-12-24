@@ -174,7 +174,11 @@ public class MessageServiceImpl implements MessageService {
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
-				listGroup.setTotalMember(Long.parseLong(objects[4].toString()));
+				try {
+					listGroup.setTotalMember(Long.parseLong(objects[4].toString()));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 				try {
 					listGroup.setLastUpDateDate(objects[5].toString());
 				} catch (Exception e) {
@@ -182,6 +186,17 @@ public class MessageServiceImpl implements MessageService {
 				}
 				try {
 					listGroup.setStatus(Boolean.parseBoolean(objects[6].toString()));
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				try {
+					listGroup.setUserId(Long.parseLong(objects[7].toString()));
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				try {
+					listGroup.setContactId(Long.parseLong(objects[8].toString()));
 				} catch (Exception e) {
 					// TODO: handle exception
 				}

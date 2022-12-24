@@ -27,13 +27,13 @@ public interface MessageResponsetory extends JpaRepository<Messages, Long> {
 			+ "FETCH NEXT @RowsOfPage ROWS ONLY", nativeQuery = true)
 	List<Object[]> findMessageAll(Long page,Long limit,Long roomId);
 
-	@Query(value = "Select r.roomId, g.name,g.avatar,r.LastMessage,g.totalMember,r.lastUpDateDate, v.status from RoomChats r\n"
+	@Query(value = "Select r.roomId, g.name,g.avatar,r.LastMessage,g.totalMember,r.lastUpDateDate, v.status,u.userId ,c.contactId from RoomChats r\n"
 			+ "			JOIN Groups g on g.groupId = r.groupId\n"
 			+ "			JOIN Contacts c on r.roomId = c.roomId\n"
 			+ "			JOIN Users u on c.userId = u.userId\n"
 			+ "            JOIN ViewedStatus v on v.contactId = c.contactId\n"
-			+ "			WHERE u.userId=?1\n"
-			+ "			GROUP BY r.roomId,g.name,r.lastMessage,r.LastUpDateDate, g.avatar,g.totalMember, v.status\n"
+			+ "			WHERE u.userId=?1 AND c.status=1 \n"
+			+ "			GROUP BY r.roomId,g.name,r.lastMessage,r.LastUpDateDate, g.avatar,g.totalMember, v.status,u.userId ,c.contactId \n"
 			+ "			ORDER by r.LastUpDateDate DESC", nativeQuery = true)
 	List<Object[]> getNameGroupDESC(Long userId);
 

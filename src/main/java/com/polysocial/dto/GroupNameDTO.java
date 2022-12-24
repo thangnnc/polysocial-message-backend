@@ -25,6 +25,8 @@ public class GroupNameDTO {
 	
 	private Boolean status;
 	
+	private Long contactId;
+	
 	private List<Object[]> listContacts;
 
 	
