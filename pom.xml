@@ -11,7 +11,7 @@
     <groupId>com</groupId>
     <artifactId>polysocial-messsage-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>polysocial-messsage-backend</name>
     <description>polysocial-messsage-backend</description>
     <properties>
@@ -23,6 +23,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
